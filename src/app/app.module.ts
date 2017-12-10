@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { UberLoginProvider } from '../providers/uber-login/uber-login';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { UberLoginProvider } from '../providers/uber-login/uber-login';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
