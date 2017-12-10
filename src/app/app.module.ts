@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
+import { UberLoginProvider } from '../providers/uber-login/uber-login';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoginPage } from '../pages/login/login';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UberLoginProvider
   ]
 })
 export class AppModule {}
