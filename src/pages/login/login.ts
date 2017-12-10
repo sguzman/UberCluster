@@ -24,4 +24,8 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  submit() {
+    console.log(this.user, this.pass);
+  }
+
 }
