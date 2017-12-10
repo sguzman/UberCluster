@@ -27,5 +27,4 @@ export class LoginPage {
   submit() {
     console.log(this.user, this.pass);
   }
-
 }

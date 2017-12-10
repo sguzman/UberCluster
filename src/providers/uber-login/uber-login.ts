@@ -9,9 +9,11 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class UberLoginProvider {
+  public login(user: string) {
+    return this.http.get('https://auth.uber.com/login/?next_url=https%3A%2F%2Fpartners.uber.com')
+  }
 
   constructor(public http: HttpClient) {
     console.log('Hello UberLoginProvider Provider');
   }
-
 }
