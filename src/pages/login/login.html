@@ -23,5 +23,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="primary">Submit</ion-navbar>
+  <button [disabled]="user.length === 0 || pass.length === 0" color="primary" ion-button full large>Submit</button>
 </ion-footer>
