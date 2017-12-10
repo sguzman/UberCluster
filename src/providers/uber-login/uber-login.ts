@@ -13,7 +13,7 @@ export class UberLoginProvider {
     return this.http.get('https://auth.uber.com/login/?next_url=https%3A%2F%2Fpartners.uber.com')
   }
 
-  constructor(public http: HttpClient) {
+  constructor(private http: HttpClient) {
     console.log('Hello UberLoginProvider Provider');
   }
 }
