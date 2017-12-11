@@ -5,14 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { UberLoginProvider } from '../providers/uber-login/uber-login';
 import {HttpClientModule} from "@angular/common/http";
+import { UberDataProvider } from '../providers/uber-data/uber-data';
+import {MapPage} from "../pages/map/map";
 
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -22,13 +22,13 @@ import {HttpClientModule} from "@angular/common/http";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    MapPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UberLoginProvider
+    UberDataProvider
   ]
 })
 export class AppModule {}
