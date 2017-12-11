@@ -1,4 +1,4 @@
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
@@ -18,7 +18,7 @@ export class UberLoginProvider {
 
   public email(emailStr: string): Observable<HttpResponse<string>> {
     return this.login()
-      .flatMap(s => this.http.post('https://auth.uber.com/login/handleanswer', {
+      .flatMap(csrf => this.http.post('https://auth.uber.com/login/handleanswer', {
         answer: {
           type: 'VERIFY_INPUT_USERNAME',
           userIdentifier: {
@@ -27,6 +27,8 @@ export class UberLoginProvider {
         },
         init: true
       }, {
+        headers: new HttpHeaders()
+          .set('x-csrf-token', csrf),
         observe: 'response',
         responseType: 'text'
       }));
