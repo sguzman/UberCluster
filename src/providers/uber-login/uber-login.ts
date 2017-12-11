@@ -18,20 +18,24 @@ export class UberLoginProvider {
 
   public email(emailStr: string): Observable<HttpResponse<string>> {
     return this.login()
-      .flatMap(csrf => this.http.post('https://auth.uber.com/login/handleanswer', {
-        answer: {
-          type: 'VERIFY_INPUT_USERNAME',
-          userIdentifier: {
-            email: emailStr
-          }
-        },
-        init: true
-      }, {
-        headers: new HttpHeaders()
-          .set('x-csrf-token', csrf),
-        observe: 'response',
-        responseType: 'text'
-      }));
+      .flatMap(csrf => {
+        return this.http.post('https://auth.uber.com/login/handleanswer', {
+          answer: {
+            type: 'VERIFY_INPUT_USERNAME',
+            userIdentifier: {
+              email: emailStr
+            }
+          },
+          init: true
+        }, {
+          headers: new HttpHeaders()
+            .set('x-csrf-token', csrf)
+            .set('Content-Type', 'application/json'),
+          observe: 'response',
+          responseType: 'text',
+          withCredentials: true
+        })
+      });
   }
 
   constructor(private http: HttpClient) {
