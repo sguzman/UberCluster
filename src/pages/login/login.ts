@@ -24,13 +24,17 @@ export class LoginPage {
   getLogin = new Subject();
   constructor(public uber: UberLoginProvider) {
     this.getLogin
-      .flatMap(s => this.uber.login()).subscribe(
+      .flatMap(s => this.uber.email(this.user)).subscribe(
       s => console.log(s)
     )
   }
 
   public static ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  email() {
+    this.getLogin.next();
   }
 
   submit() {
