@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
@@ -11,7 +11,8 @@ export class UberLoginProvider {
         {
           observe: 'response',
           responseType: 'text'
-        });
+        })
+      .map((response: HttpResponse<string>) => response.headers.get('x-csrf-token'));
   }
 
   constructor(private http: HttpClient) {
