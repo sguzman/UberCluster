@@ -12,10 +12,9 @@ import {Observable} from "rxjs/Rx";
 */
 @Injectable()
 export class UberLoginProvider {
-  public login(user: string) {
+  public login() {
     return this.http
-      .get('https://auth.uber.com/login/?next_url=https%3A%2F%2Fpartners.uber.com')
-      .catch(s => Observable.of(s));
+      .get('https://auth.uber.com/login/?next_url=https%3A%2F%2Fpartners.uber.com');
   }
 
   constructor(private http: HttpClient) {
