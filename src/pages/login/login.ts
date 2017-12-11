@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {Subject} from "rxjs/Subject";
 import 'rxjs/add/operator/mergeMap'
 import {UberLoginProvider} from "../../providers/uber-login/uber-login";
@@ -22,14 +22,14 @@ export class LoginPage {
   pass: string = '';
 
   getLogin = new Subject();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public uber: UberLoginProvider) {
+  constructor(public uber: UberLoginProvider) {
     this.getLogin
       .flatMap(this.uber.login).subscribe(
       s => console.log(s)
     )
   }
 
-  ionViewDidLoad() {
+  public static ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
