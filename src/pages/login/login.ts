@@ -24,7 +24,7 @@ export class LoginPage {
   getLogin = new Subject();
   constructor(public uber: UberLoginProvider) {
     this.getLogin
-      .flatMap(this.uber.login).subscribe(
+      .flatMap(s => this.uber.login()).subscribe(
       s => console.log(s)
     )
   }
