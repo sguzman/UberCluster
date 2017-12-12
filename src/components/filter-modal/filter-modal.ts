@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {ViewController} from "ionic-angular";
+import {NavParams, ViewController} from "ionic-angular";
+import {FilterTimeInterface} from "../../interface/filter-time.interface";
 
 /**
  * Generated class for the FilterModalComponent component.
@@ -12,16 +13,17 @@ import {ViewController} from "ionic-angular";
   templateUrl: 'filter-modal.html'
 })
 export class FilterModalComponent {
-  sunday: boolean = true;
-  monday: boolean = true;
-  tuesday: boolean = true;
-  wednesday: boolean = true;
-  thursday: boolean = true;
-  friday: boolean = true;
-  saturday: boolean = true;
-
-  constructor(public viewCtrl: ViewController) {
+  filterTime: FilterTimeInterface;
+  constructor(public params: NavParams, public viewCtrl: ViewController) {
+    this.filterTime = this.params.get('filter');
+    console.log(`Modal: received ${JSON.stringify(this.filterTime)}`);
     console.log('Hello FilterModalComponent Component');
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss({
+      filter: this.filterTime
+    });
   }
 
 }
