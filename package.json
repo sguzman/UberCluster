@@ -27,6 +27,8 @@
     "cordova-browser": "5.0.1",
     "cordova-ios": "4.5.4",
     "cordova-plugin-device": "^1.1.4",
+    "cordova-plugin-googlemaps": "^2.1.1",
+    "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-whitelist": "^1.3.1",
@@ -48,7 +50,13 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {}
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyCWUMt3ozaPk52L-cc5S33V-hX_mZQrTx4",
+        "API_KEY_FOR_IOS": "AIzaSyDH51W44Fhuc3Dh3WImegRoxZDZj7NblXo",
+        "LOCATION_WHEN_IN_USE_DESCRIPTION": "Show your location on the map",
+        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map"
+      }
     },
     "platforms": [
       "ios",
