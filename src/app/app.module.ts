@@ -7,11 +7,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {UberMapPage} from "../pages/uber-map/uber-map";
+import {FilterModalComponent} from "../components/filter-modal/filter-modal";
 
 @NgModule({
   declarations: [
     MyApp,
-    UberMapPage
+    UberMapPage,
+    FilterModalComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import {UberMapPage} from "../pages/uber-map/uber-map";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    UberMapPage
+    UberMapPage,
+    FilterModalComponent
   ],
   providers: [
     StatusBar,
