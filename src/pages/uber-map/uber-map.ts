@@ -72,11 +72,11 @@ export class UberMapPage {
 
   loadMap(){
 
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+    let latLng = new google.maps.LatLng(37.352926, -121.972630);
 
     let mapOptions = {
       center: latLng,
-      zoom: 15,
+      zoom: 9,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
