@@ -7,11 +7,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MapPage} from "../pages/map/map";
+import {UberLoginPage} from "../pages/uber-login/uber-login";
 
 @NgModule({
   declarations: [
     MyApp,
-    MapPage
+    MapPage,
+    UberLoginPage
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import {MapPage} from "../pages/map/map";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    MapPage
+    MapPage,
+    UberLoginPage
   ],
   providers: [
     StatusBar,
