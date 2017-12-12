@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { UberLoginPage } from './uber-login';
+import { UberMapPage } from './uber-map';
 
 @NgModule({
   declarations: [
-    UberLoginPage,
+    UberMapPage,
   ],
   imports: [
-    IonicPageModule.forChild(UberLoginPage),
+    IonicPageModule.forChild(UberMapPage),
   ],
 })
-export class UberLoginPageModule {}
+export class UberMapPageModule {}
