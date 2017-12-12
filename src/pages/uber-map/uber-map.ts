@@ -18,7 +18,9 @@ export class UberMapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   trips: any[];
-  tripClusterMarkers: any[] = [];
+  markers: any[] = [];
+  isShown: boolean = true;
+  markerCluster: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.trips = data.items;
@@ -56,15 +58,14 @@ export class UberMapPage {
       const marker = new google.maps.Marker({
         position: item.pickup
       });
-      this.tripClusterMarkers.push(marker);
-      console.log(item);
+      this.markers.push(marker);
     }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UberMapPage');
     this.loadMap();
-    const markerCluster = new MarkerClusterer(this.map, this.tripClusterMarkers, {
+    this.markerCluster = new MarkerClusterer(this.map, this.markers, {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
 
@@ -81,7 +82,18 @@ export class UberMapPage {
     };
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+  }
 
+  toggleMarkers() {
+    if (this.isShown) {
+      this.markerCluster.clearMarkers();
+    } else {
+      this.markerCluster = new MarkerClusterer(this.map, this.markers, {
+        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+      });
+    }
+
+    this.isShown = !this.isShown;
   }
 
 }
