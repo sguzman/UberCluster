@@ -50,17 +50,12 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyCWUMt3ozaPk52L-cc5S33V-hX_mZQrTx4",
-        "API_KEY_FOR_IOS": "AIzaSyDH51W44Fhuc3Dh3WImegRoxZDZj7NblXo",
-        "LOCATION_WHEN_IN_USE_DESCRIPTION": "Show your location on the map",
-        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map"
-      }
+      "cordova-plugin-ionic-webview": {}
     },
     "platforms": [
       "ios",
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }
