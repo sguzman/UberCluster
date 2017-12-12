@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, ModalController} from 'ionic-angular';
 
 declare var google: any;
 declare var require: any;
@@ -8,6 +8,8 @@ const s = require('underscore.string');
 
 import {data} from '../../data/cache.data'
 import {FilterModalComponent} from "../../components/filter-modal/filter-modal";
+import {FilterTimeInterface} from "../../interface/filter-time.interface";
+import {FilterDayOfWeekInterface} from "../../interface/filter-day-of-week.interface";
 
 
 @IonicPage()
@@ -20,11 +22,26 @@ export class UberMapPage {
   map: any;
   trips: any[];
   markers: any[] = [];
-  isShown: boolean = true;
-  markerCluster: any;
+  filter: FilterTimeInterface;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public modalCtrl: ModalController) {
     this.trips = data.items;
+    const bool: boolean[] = Array.prototype.fill(true, 0, 24);
+    const filterDayOfWeek: FilterDayOfWeekInterface = {
+      sunday: true,
+      monday: true,
+      tuesday: true,
+      wednesday: true,
+      thursday: true,
+      friday: true,
+      saturday: true
+    };
+
+    this.filter = {
+      dayOfWeek: filterDayOfWeek,
+      hour: bool
+    };
+
     for (let idx = 0; idx < this.trips.length; ++idx) {
       const item = this.trips[idx];
 
@@ -66,13 +83,13 @@ export class UberMapPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UberMapPage');
     this.loadMap();
-    this.markerCluster = new MarkerClusterer(this.map, this.markers, {
+    const markerCluster = new MarkerClusterer(this.map, this.markers, {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
 
   }
 
-  loadMap(){
+  private loadMap(){
 
     let latLng = new google.maps.LatLng(37.352926, -121.972630);
 
@@ -86,20 +103,13 @@ export class UberMapPage {
   }
 
   toggleModal() {
-    const modal = this.modalCtrl.create(FilterModalComponent);
+    const modal = this.modalCtrl.create(FilterModalComponent, {
+      filter: this.filter
+    });
+    modal.onDidDismiss(data => {
+      this.filter = data.filter;
+      console.log(`Map: received ${JSON.stringify(data)}`);
+    });
     modal.present();
   }
-
-  toggleMarkers() {
-    if (this.isShown) {
-      this.markerCluster.clearMarkers();
-    } else {
-      this.markerCluster = new MarkerClusterer(this.map, this.markers, {
-        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-      });
-    }
-
-    this.isShown = !this.isShown;
-  }
-
 }
