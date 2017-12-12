@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import { UberDataProvider } from '../providers/uber-data/uber-data';
 import {MapPage} from "../pages/map/map";
 
 @NgModule({
@@ -28,7 +27,6 @@ import {MapPage} from "../pages/map/map";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UberDataProvider
   ]
 })
 export class AppModule {}
