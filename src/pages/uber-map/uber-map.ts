@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
 
 declare var google: any;
 declare var require: any;
@@ -7,6 +7,7 @@ declare var MarkerClusterer: any;
 const s = require('underscore.string');
 
 import {data} from '../../data/cache.data'
+import {FilterModalComponent} from "../../components/filter-modal/filter-modal";
 
 
 @IonicPage()
@@ -22,7 +23,7 @@ export class UberMapPage {
   isShown: boolean = true;
   markerCluster: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
     this.trips = data.items;
     for (let idx = 0; idx < this.trips.length; ++idx) {
       const item = this.trips[idx];
@@ -82,6 +83,11 @@ export class UberMapPage {
     };
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+  }
+
+  toggleModal() {
+    const modal = this.modalCtrl.create(FilterModalComponent);
+    modal.present();
   }
 
   toggleMarkers() {
