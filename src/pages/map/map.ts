@@ -1,12 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, Platform} from 'ionic-angular';
 
-/**
- * Generated class for the MapPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+declare var google;
 
 @IonicPage()
 @Component({
@@ -14,12 +9,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'map.html',
 })
 export class MapPage {
+  map: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor() {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MapPage');
+  ionViewDidLoad(){
+    this.initializeMap();
   }
 
+  initializeMap() {
+    let locationOptions = {timeout: 20000, enableHighAccuracy: true};
+    navigator.geolocation.getCurrentPosition(
+
+      (position) => {
+        console.log(position.coords);
+        let options = {
+          center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          zoom: 16,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
+      },
+
+      (error) => {
+        console.log(error);
+      }, locationOptions
+    );
+  }
 }
