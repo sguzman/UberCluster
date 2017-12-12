@@ -1,39 +1,39 @@
 <ion-content padding>
-  <ion-title>Weekdays</ion-title>
+  <ion-label>Weekdays</ion-label>
   <ion-list>
     <ion-item>
       <ion-label>Sunday</ion-label>
-      <ion-checkbox [(ngModel)]="sunday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.sunday" color="primary" checked="true"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Monday</ion-label>
-      <ion-checkbox [(ngModel)]="monday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.monday" color="primary" checked="true"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Tuesday</ion-label>
-      <ion-checkbox [(ngModel)]="tuesday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.tuesday" color="primary" checked="true"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Wednesday</ion-label>
-      <ion-checkbox [(ngModel)]="wednesday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.wednesday" color="primary" checked="true"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Thursday</ion-label>
-      <ion-checkbox [(ngModel)]="thursday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.thursday" color="primary" checked="true"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Friday</ion-label>
-      <ion-checkbox [(ngModel)]="friday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.friday" color="primary" checked="true"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Saturday</ion-label>
-      <ion-checkbox [(ngModel)]="saturday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.saturday" color="primary" checked="true"></ion-checkbox>
     </ion-item>
   </ion-list>
   <ion-fab top right>
