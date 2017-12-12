@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage} from 'ionic-angular';
+import {data} from '../../data/cache.data'
 
 @IonicPage()
 @Component({
@@ -7,17 +8,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'uber-login.html',
 })
 export class UberLoginPage {
-  cookie: string = '';
+  trips: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor() {
+    this.trips = data.items;
   }
 
   static ionViewDidLoad() {
     console.log('ionViewDidLoad UberLoginPage');
   }
-
-  click() {
-    console.log('click');
-  }
-
 }
