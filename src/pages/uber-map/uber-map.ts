@@ -1,11 +1,13 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+declare var google: any;
+declare var require: any;
+declare var MarkerClusterer: any;
 const s = require('underscore.string');
 
 import {data} from '../../data/cache.data'
 
-declare var google: any;
 
 @IonicPage()
 @Component({
@@ -16,6 +18,7 @@ export class UberMapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   trips: any[];
+  tripClusterMarkers: any[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.trips = data.items;
@@ -50,6 +53,10 @@ export class UberMapPage {
         item['dropoff']['lng'] = parseFloat(latLngStrs[1]);
       }
 
+      const marker = new google.maps.Marker({
+        position: item.pickup
+      });
+      this.tripClusterMarkers.push(marker);
       console.log(item);
     }
   }
@@ -57,6 +64,10 @@ export class UberMapPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UberMapPage');
     this.loadMap();
+    const markerCluster = new MarkerClusterer(this.map, this.tripClusterMarkers, {
+      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+    });
+
   }
 
   loadMap(){
