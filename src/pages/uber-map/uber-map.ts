@@ -26,7 +26,7 @@ export class UberMapPage {
 
   constructor(public modalCtrl: ModalController) {
     this.trips = data.items;
-    const bool: boolean[] = Array.prototype.fill(true, 0, 24);
+    const bool: boolean[] = new Array(24).fill(true);
     const filterDayOfWeek: FilterDayOfWeekInterface = {
       sunday: true,
       monday: true,
