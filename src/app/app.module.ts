@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {UberMapPage} from "../pages/uber-map/uber-map";
 import {FilterModalComponent} from "../components/filter-modal/filter-modal";
+import { FilterTimeProvider } from '../providers/filter-time/filter-time';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {FilterModalComponent} from "../components/filter-modal/filter-modal";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FilterTimeProvider,
   ]
 })
 export class AppModule {}
