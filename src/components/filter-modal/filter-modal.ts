@@ -26,4 +26,8 @@ export class FilterModalComponent {
     });
   }
 
+  public trackByIndex(index: number, item: boolean) {
+    return index;
+  }
+
 }

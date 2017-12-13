@@ -3,40 +3,49 @@
   <ion-list>
     <ion-item>
       <ion-label>Sunday</ion-label>
-      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.sunday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.sunday" color="primary"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Monday</ion-label>
-      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.monday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.monday" color="primary"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Tuesday</ion-label>
-      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.tuesday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.tuesday" color="primary"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Wednesday</ion-label>
-      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.wednesday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.wednesday" color="primary"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Thursday</ion-label>
-      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.thursday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.thursday" color="primary"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Friday</ion-label>
-      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.friday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.friday" color="primary"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Saturday</ion-label>
-      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.saturday" color="primary" checked="true"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="filterTime.dayOfWeek.saturday" color="primary"></ion-checkbox>
     </ion-item>
   </ion-list>
+
+  <ion-label>Hours</ion-label>
+  <ion-list>
+    <ion-item *ngFor="let hr of filterTime.hour; let i = index; trackBy: trackByIndex">
+      <ion-label>{{i}}</ion-label>
+      <ion-checkbox [(ngModel)]="filterTime.hour[i]" color="primary"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
   <ion-fab top right>
-    <button (click)="dismiss()" ion-fab mini edge><ion-icon name="close"></ion-icon></button>
+    <button color="danger" (click)="dismiss()" ion-fab mini edge><ion-icon name="close"></ion-icon></button>
   </ion-fab>
 </ion-content>
