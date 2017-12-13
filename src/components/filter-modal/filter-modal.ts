@@ -19,6 +19,18 @@ export class FilterModalComponent {
     console.log('Hello FilterModalComponent Component');
   }
 
+  deselectHoursAll() {
+    for (let i = 0; i < this.filterTime.hour.length; ++i) {
+      this.filterTime.hour[i] = false;
+    }
+  }
+
+  selectHoursAll() {
+    for (let i = 0; i < this.filterTime.hour.length; ++i) {
+      this.filterTime.hour[i] = true;
+    }
+  }
+
   dismiss() {
     this.viewCtrl.dismiss({
       filter: this.filterTime
