@@ -1,16 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-
 
 @Injectable()
 export class FilterTimeProvider {
-  public filterbyTime(items: any[], filterObject: any): any[] {
-    return [];
+  public static filterbyTime(items: any[], filterObject: any): any[] {
+    return items;
   }
 
   constructor() {
     console.log('Hello FilterTimeProvider Provider');
   }
-
 }
