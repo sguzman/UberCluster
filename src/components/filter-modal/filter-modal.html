@@ -1,5 +1,7 @@
 <ion-content padding>
   <ion-label>Weekdays</ion-label>
+  <button ion-button (click)="selectDaysAll()" color="primary" outline>Select All</button>
+  <button ion-button (click)="deselectDaysAll()" color="primary" outline>Deselect All</button>
   <ion-list>
     <ion-item>
       <ion-label>Sunday</ion-label>
@@ -38,8 +40,8 @@
   </ion-list>
 
   <ion-label>Hours</ion-label>
-  <button id="select-all-button" ion-button (click)="selectHoursAll()" color="secondary" outline>Select All</button>
-  <button id="deselect-all-button" ion-button (click)="deselectHoursAll()" color="secondary" outline>Deselect All</button>
+  <button ion-button (click)="selectHoursAll()" color="secondary" outline>Select All</button>
+  <button ion-button (click)="deselectHoursAll()" color="secondary" outline>Deselect All</button>
   <ion-list>
     <ion-item *ngFor="let hr of filterTime.hour; let i = index; trackBy: trackByIndex">
       <ion-label>{{i}}</ion-label>

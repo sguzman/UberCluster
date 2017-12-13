@@ -19,6 +19,26 @@ export class FilterModalComponent {
     console.log('Hello FilterModalComponent Component');
   }
 
+  deselectDaysAll() {
+    this.filterTime.dayOfWeek.sunday = false;
+    this.filterTime.dayOfWeek.monday = false;
+    this.filterTime.dayOfWeek.tuesday = false;
+    this.filterTime.dayOfWeek.wednesday = false;
+    this.filterTime.dayOfWeek.thursday = false;
+    this.filterTime.dayOfWeek.friday = false;
+    this.filterTime.dayOfWeek.saturday = false;
+  }
+
+  selectDaysAll() {
+    this.filterTime.dayOfWeek.sunday = true;
+    this.filterTime.dayOfWeek.monday = true;
+    this.filterTime.dayOfWeek.tuesday = true;
+    this.filterTime.dayOfWeek.wednesday = true;
+    this.filterTime.dayOfWeek.thursday = true;
+    this.filterTime.dayOfWeek.friday = true;
+    this.filterTime.dayOfWeek.saturday = true;
+  }
+
   deselectHoursAll() {
     for (let i = 0; i < this.filterTime.hour.length; ++i) {
       this.filterTime.hour[i] = false;
