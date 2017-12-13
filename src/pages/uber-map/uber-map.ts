@@ -121,7 +121,8 @@ export class UberMapPage {
 
   filterByFilterObj() {
     this.markerCluster.clearMarkers();
-    const results = this.filterPrvdr.filterbyTime(this.trips, this.filter);
+    const filtered = FilterTimeProvider.filterbyTime(this.trips, this.filter);
+    const results = _.map(_.filter(filtered, (x) => x.marker), 'marker')
     this.markerCluster = new MarkerClusterer(this.map, results, {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
