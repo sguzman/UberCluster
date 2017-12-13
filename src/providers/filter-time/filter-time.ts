@@ -25,7 +25,7 @@ export class FilterTimeProvider {
   }
 
   public static boolsFromDayOfWeek(days: FilterDayOfWeekInterface): boolean[] {
-    const daysOfWeek: boolean[] = [
+    return [
       days.sunday,
       days.monday,
       days.tuesday,
@@ -34,8 +34,6 @@ export class FilterTimeProvider {
       days.friday,
       days.saturday,
     ];
-
-    return daysOfWeek;
   }
 
   constructor() {
