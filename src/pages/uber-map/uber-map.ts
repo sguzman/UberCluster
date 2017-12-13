@@ -12,6 +12,7 @@ import {data} from '../../data/cache.data'
 import {FilterModalComponent} from "../../components/filter-modal/filter-modal";
 import {FilterTimeInterface} from "../../interface/filter-time.interface";
 import {FilterDayOfWeekInterface} from "../../interface/filter-day-of-week.interface";
+import {FilterTimeProvider} from "../../providers/filter-time/filter-time";
 
 
 @IonicPage()
@@ -27,7 +28,7 @@ export class UberMapPage {
 
   markerCluster: any;
 
-  constructor(public modalCtrl: ModalController) {
+  constructor(private modalCtrl: ModalController, private filterPrvdr: FilterTimeProvider) {
     this.trips = data.items;
     const filterDayOfWeek: FilterDayOfWeekInterface = {
       sunday: true,
@@ -114,11 +115,15 @@ export class UberMapPage {
     modal.onDidDismiss(data => {
       this.filter = data.filter;
       this.filterByFilterObj();
-      console.log(`Map: received ${JSON.stringify(data)}`);
     });
     modal.present();
   }
 
   filterByFilterObj() {
+    this.markerCluster.clearMarkers();
+    const results = this.filterPrvdr.filterbyTime(this.trips, this.filter);
+    this.markerCluster = new MarkerClusterer(this.map, results, {
+      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+    });
   }
 }
