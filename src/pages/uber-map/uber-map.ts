@@ -104,6 +104,8 @@ export class UberMapPage {
   toggleModal() {
     const modal = this.modalCtrl.create(FilterModalComponent, {
       filter: this.filter
+    }, {
+      enableBackdropDismiss: false
     });
     modal.onDidDismiss(data => {
       this.filter = data.filter;
