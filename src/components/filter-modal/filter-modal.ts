@@ -16,7 +16,6 @@ export class FilterModalComponent {
   filterTime: FilterTimeInterface;
   constructor(public params: NavParams, public viewCtrl: ViewController) {
     this.filterTime = this.params.get('filter');
-    console.log(`Modal: received ${JSON.stringify(this.filterTime)}`);
     console.log('Hello FilterModalComponent Component');
   }
 
