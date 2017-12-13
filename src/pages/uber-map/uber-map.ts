@@ -4,7 +4,9 @@ import {IonicPage, ModalController} from 'ionic-angular';
 declare var google: any;
 declare var require: any;
 declare var MarkerClusterer: any;
+
 const s = require('underscore.string');
+const _ = require('lodash');
 
 import {data} from '../../data/cache.data'
 import {FilterModalComponent} from "../../components/filter-modal/filter-modal";
@@ -21,8 +23,9 @@ export class UberMapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   trips: any[];
-  markers: any[] = [];
   filter: FilterTimeInterface;
+
+  markerCluster: any;
 
   constructor(public modalCtrl: ModalController) {
     this.trips = data.items;
@@ -72,17 +75,18 @@ export class UberMapPage {
         item['dropoff']['lng'] = parseFloat(latLngStrs[1]);
       }
 
-      const marker = new google.maps.Marker({
-        position: item.pickup
+      item['marker'] = new google.maps.Marker({
+        position: item.pickup,
+        label: item.total
       });
-      this.markers.push(marker);
     }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UberMapPage');
     this.loadMap();
-    const markerCluster = new MarkerClusterer(this.map, this.markers, {
+    const markers = _.map(_.filter(this.trips, (x) => x.marker), 'marker');
+    this.markerCluster = new MarkerClusterer(this.map, markers, {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
 
@@ -109,8 +113,12 @@ export class UberMapPage {
     });
     modal.onDidDismiss(data => {
       this.filter = data.filter;
+      this.filterByFilterObj();
       console.log(`Map: received ${JSON.stringify(data)}`);
     });
     modal.present();
+  }
+
+  filterByFilterObj() {
   }
 }
